@@ -9,3 +9,6 @@
   Pentru folosirea site-ului web, un utilizator va trebui sa se autentifice prin intermediul mailului institutional. Odata intrat pe site, utilizatorul va putea sa isi creeze directoare distincte pentru fiecare materie in care este posibila stocarea notitelor personale. Aceste notite pot fi organizate dupa data, pot fi editate, sterse si partajate cu alti utilizatori. O alta functionalitate a site-ului se refera la existenta unui director comun al grupei sau al seriei in care fiecare utilizator sa poata distribui notitele proprii care pot fi accesate de toata lumea prin intermediul unei invitatii.
 
   Produsul final va avea o interfata simpla si accesibila oricui, pentru a facilita rapiditatea procesului de salvare si organizare de notite. Astfel acesta deosebindu-se de site-uri existente precum: StuDocu, Evernote, Simplenote, NimbleNotes ce necesita o perioada indelungata pentru lucrul cu acestea.
+
+## Schita proiect
+![schita proiect](https://user-images.githubusercontent.com/72069125/98846884-3f245600-2458-11eb-8fb4-f5d9e6b7b837.png)
