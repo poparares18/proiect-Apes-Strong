@@ -12,7 +12,9 @@
   
 ## Roluri echipa
 Responsabil de proces: Popescu Luca, Radu Florin Eusebiu
+
 Responsabil de produs: Radu Alexandru, Popa Rares-Nicolae
+
 Developers: Radu Alexandru, Popescu Luca, Popa Rares-Nicolae, Radu Florin Eusebiu
 
 ## Schita proiect
