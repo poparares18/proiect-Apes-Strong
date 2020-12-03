@@ -1,0 +1,29 @@
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+label{
+    padding-right: 10px;
+    display: block;
+    float: left;
+    text-align: right;
+    display: block;
+    width: 50%;
+}
+
+input[type="text"]{
+    display: block;
+    float: left;
+    text-align: left;
+    display: block;
+    
+}
+
+input[type="button"]{
+    display: block;
+}
+
