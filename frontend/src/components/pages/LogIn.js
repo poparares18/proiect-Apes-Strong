@@ -13,6 +13,24 @@ function LogIn() {
         setPassword(e.target.value);
     }
     
+    function validate(){
+      if(username.replace(/\s/g, "").length < 5 || username.replace(/\s/g, "").length > 15){
+        alert("Username-ul este invalid!");
+        return false;
+      }
+      if(password.replace(/\s/g, "").length < 8 || password.replace(/\s/g, "").length > 16){
+        alert("Password-ul este invalid!");
+        return false;
+      }
+      return true;
+    
+    }
+     function LogIn(){
+      if(validate()){
+        alert("Datele sunt corecte!")
+      }
+     }
+
     return (
       <div>
         <Header name={"Log In"} />
@@ -25,7 +43,7 @@ function LogIn() {
         <label for="password">Password: </label>
         <input type="text" id="password" onChange={handleChangePassword}/>
         
-        <input type="button" value="Log in" id="btnLogIn"/>
+        <input type="button" value="Log in" id="btnLogIn" onClick={LogIn}/>
         <a href="www.google.com" id="SignUp">Sign up</a>
         </div>
         
