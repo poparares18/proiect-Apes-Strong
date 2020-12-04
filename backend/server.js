@@ -1,6 +1,9 @@
 const express = require('express')
+const { Users } = require('./models/tables')
 const app = express()
 
-app.use('/abc', express.static('../frontend2'))
+Users.sync().then(()=>{
+    console.log("Tabel creat")
+})
 
 app.listen(8080)
