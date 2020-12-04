@@ -7,6 +7,7 @@ function LogIn() {
     // Declare a new state variable, which we'll call "count"
     const [username,setUserName] = useState('');
     const [password,setPassword] = useState('');
+    let history = useHistory();
     const handleChangeUsername = (e)=>{
         setUserName(e.target.value);
     }
@@ -30,9 +31,7 @@ function LogIn() {
       if(validate()){
         alert("Datele sunt corecte!")
         
-        const materii = useHistory();
-        let path = `./Materii.js`; 
-        materii.push(path);
+        
  
       }
      }
@@ -50,7 +49,7 @@ function LogIn() {
         <input type="text" id="password" onChange={handleChangePassword}/>
         
         <input type="button" value="Log in" id="btnLogIn" onClick={LogIn}/>
-        <a href="www.google.com" id="SignUp">Sign up</a>
+        <a onClick={()=>history.push("/sign-up")} id="SignUp">Sign up</a>
         </div>
         
       </div>

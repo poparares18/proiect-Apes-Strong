@@ -6,9 +6,9 @@ function Header(props) {
 
   return (
 
-    <div id='divHeader' >
+    <header>
       <p>{props.name}</p>
-    </div>
+    </header>
   );
 }
 
