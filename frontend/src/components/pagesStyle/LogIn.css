@@ -1,29 +1,48 @@
-h1{
+#Title{
     text-align: center;
 }
 
-h2{
+#Login{
     text-align: center;
 }
 
-label{
-    padding-right: 10px;
+#SignUp{
+    text-align: center;
     display: block;
-    float: left;
-    text-align: right;
-    display: block;
-    width: 50%;
+    padding: 10px 0 10px 0;
 }
 
-input[type="text"]{
-    display: block;
-    float: left;
-    text-align: left;
-    display: block;
-    
+#divLogIn label{
+    width: 100%;
+    text-align: center;
+    margin-left: 13px;
+    padding: 30px 0 30px 0;
+    font-size: 20px;
 }
 
-input[type="button"]{
-    display: block;
+#divLogIn input[type=text], input[type=password] {
+  width: 98%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 13px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#btnLogIn{
+    background-color: #4CAF50;
+  color: white;
+  padding: 15px 0 15px 0;
+  /* top/right/bottom/left */
+
+  text-align: center;
+  margin-left: 13px;
+  border: none;
+  cursor: pointer;
+  width: 98%;
+  font-size: 15px;
 }
 
