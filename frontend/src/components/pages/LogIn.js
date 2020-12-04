@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../pagesStyle/LogIn.css';
 import Header from '../headers/Header';
+import {useHistory} from "react-router-dom";
 
 function LogIn() {
     // Declare a new state variable, which we'll call "count"
@@ -28,6 +29,11 @@ function LogIn() {
      function LogIn(){
       if(validate()){
         alert("Datele sunt corecte!")
+        
+        const materii = useHistory();
+        let path = `./Materii.js`; 
+        materii.push(path);
+ 
       }
      }
 
