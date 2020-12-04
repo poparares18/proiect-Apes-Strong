@@ -7,7 +7,7 @@ import Materii from './components/pages/Materii'
 function App() {
   return (
     <React.Fragment>
-     <SignUp/>
+     <Materii/>
       <div className="App">
       
     </div>
