@@ -6,7 +6,7 @@ function Header(props) {
 
   return (
 
-    <div id='divHeader' style={stil}>
+    <div id='divHeaderH' style={stil}>
 
 <nav role="navigation">
   <div id="menuToggle">

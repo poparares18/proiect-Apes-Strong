@@ -1,0 +1,38 @@
+#h1Sign{
+    font-size: 32px;
+    margin-bottom: 64px;
+    text-align: center;
+}
+
+#divSignUp label{
+    font-size: 20px;
+    padding-right: 32px;
+    display: block;
+    float: left;
+    text-align: right;
+    width: 50%;
+    margin-bottom: 25px;
+    margin-top: -5px;
+}
+
+#divSignUp input[type="text"]{
+    display: block;
+    float: left;
+    text-align: left;
+    height: 20px;
+    font-size: 15px;
+}
+
+#btnSignUp{
+    font-size: 20px;
+    display: block;
+    clear: both;
+    margin-left: 45%;
+    margin-top: 400px;
+    width: 200px;
+    height: 35px;
+}
+
+
+
+

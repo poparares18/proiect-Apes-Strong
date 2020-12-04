@@ -1,7 +1,11 @@
 #divHeader{
+    font-size: 25px;
     background-color: gray;
     text-align: center;
     font-size: 26px;
+    margin-top: -18px;
+    padding-bottom: 0.5px;
+    padding-top: 6px;
 }
 
 
