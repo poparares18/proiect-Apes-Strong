@@ -11,7 +11,10 @@
     display: block;
     padding: 10px 0 10px 0;
 }
-
+#SignUp:hover{
+    color:red;
+    text-decoration: underline;
+}
 #divLogIn label{
     width: 100%;
     text-align: center;

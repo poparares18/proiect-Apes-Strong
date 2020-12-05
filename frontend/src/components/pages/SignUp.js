@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../pagesStyle/SignUp.css';
 import Header from '../headers/Header';
+import {useHistory} from "react-router-dom";
 
 function SignUp() {
     // Declare a new state variable, which we'll call "count"
@@ -10,6 +11,7 @@ function SignUp() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [nume, setNume] = useState('');
     const [prenume, setPrenume] = useState('');
+    let history = useHistory();
 
     const handleChangeUsername = (e) => {
         setUserName(e.target.value);
@@ -82,8 +84,13 @@ function SignUp() {
         if (validate()) {
             // TO DO
             alert('Corect')
+            goMaterii()
         }
     }
+    function goMaterii(){
+   
+        history.push("/");
+       }
 
     return (
         <div>

@@ -30,10 +30,13 @@ function LogIn() {
      function LogIn(){
       if(validate()){
         alert("Datele sunt corecte!")
-        
-        
+        goMaterii()
  
       }
+     }
+     function goMaterii(){
+   
+      history.push("/materii");
      }
 
     return (

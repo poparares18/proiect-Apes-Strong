@@ -121,12 +121,12 @@
 #menu
 {
   position: absolute;
-  width: 300px;
+  width: 200px;
   margin: -100px 0 0 -50px;
-  padding: 50px;
+  padding: 25px;
   padding-top: 125px;
   
-  background: #ededed;
+  background: #9e9c9c;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -134,13 +134,13 @@
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
   
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.5);
 }
 
 #menu li
 {
-  padding: 10px 0;
-  font-size: 22px;
+  padding: 5px 0;
+  font-size: 20px;
 }
 
 /*

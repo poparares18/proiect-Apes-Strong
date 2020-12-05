@@ -22,6 +22,9 @@ function App() {
         </Route>
         <Route exact path="/sign-up">
           <SignUp />
+          </Route>
+          <Route exact path="/log-in">
+          <LogIn/>
         </Route>
       </Switch>
     </Router>
