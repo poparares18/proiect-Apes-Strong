@@ -28,15 +28,35 @@ function LogIn() {
 
   }
 
-  function LogIn() {
+  async function LogIn() {
     if (validate()) {
-      alert("Datele sunt corecte!")
-      
-      // Call log in
+      if (await validareDB()) {
+        goMaterii()
+      }
 
-      goMaterii()
     }
   }
+
+  async function validareDB() {
+    let response = await fetch('http://localhost:3001/getAllUsers', {
+      method: 'GET',
+    })
+
+    let vect = await response.json()
+
+    console.log(vect)
+
+    for(let i=0;i<vect.length;i++){
+      if(username === vect[i].username && 
+        password === vect[i].password){
+          return true;
+        }
+    }
+
+    alert('Username sau parola gresite!')
+    return false;
+  }
+
   function goMaterii() {
     history.push("/materii");
   }

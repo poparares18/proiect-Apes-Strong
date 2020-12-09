@@ -81,35 +81,60 @@ function SignUp() {
         return true
     }
 
-    function fctSignUp() {
-        if (true) {
+    async function fctSignUp() {
+        if (validate()) {
             // TO DO
-            alert('Corect')
+            //alert('Corect')
 
-            // Call Sign up
-            const contNou = {
-                username: username,
-                email: email,
-                password: password,
-                nume: nume,
-                prenume: prenume
-            }
-
-            fetch('http://localhost:3001/signup', {
-                method: 'POST',
-                body: JSON.stringify(contNou),
-                headers: {
-                    'content-type': 'application/json',
-                    'accept': 'application/json'
+            if (await validareDB()) {
+                // Call Sign up
+                const contNou = {
+                    username: username,
+                    email: email,
+                    password: password,
+                    nume: nume,
+                    prenume: prenume
                 }
-            })
-            .then(response => console.log(response))
 
-            goMaterii()
+                fetch('http://localhost:3001/signup', {
+                    method: 'POST',
+                    body: JSON.stringify(contNou),
+                    headers: {
+                        'content-type': 'application/json',
+                        'accept': 'application/json'
+                    }
+                })
+
+                goLogiIn()
+            }
         }
     }
 
-    function goMaterii() {
+    async function validareDB() {
+        let response = await fetch('http://localhost:3001/getAllUsers', {
+            method: 'GET',
+        })
+
+        let vect = await response.json()
+
+        console.log(vect, 'functie async')
+
+        for (let i = 0; i < vect.length; i++) {
+            console.log(vect[i].username)
+            if (username === vect[i].username) {
+                alert('Username-ul exista deja!')
+                return false;
+            }
+            if (email === vect[i].email) {
+                alert('Email-ul este deja intregistrat!')
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    function goLogiIn() {
         history.push("/");
     }
 

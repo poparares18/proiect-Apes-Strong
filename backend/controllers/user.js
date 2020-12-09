@@ -1,21 +1,18 @@
-const userService = require("../config/user");
+const { request, response } = require('express')
+const { Users } = require('../models/tables')
 
-const createUser = async (req, res) => {
-    const user = req.body;
-    if (true) {
-        const result = await userService.create(user);
-        if (result) {
-            res.status(201).send({
-                message: "User created successfully"
-            });
-        } else {
-            res.status(400).send({
-                message: "Error occurred while trying to create the user"
-            });
-        }
-    } else {
-        res.status(400).send({
-            message: "Invalid user"
-        });
-    }
-};
+const createUser = async (request, response) => {
+    Users.create(request.body).then((result) => {
+        console.log(response.status(201).json(result))
+    }).catch((err) => {
+        response.status(500).send("resource not created")
+    })
+}
+
+const getAllUser = async (request, response) => {
+    Users.findAll().then((results) => {
+        response.status(200).json(results);
+    })
+}
+
+module.exports = { createUser, getAllUser }
