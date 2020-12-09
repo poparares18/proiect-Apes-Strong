@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../pagesStyle/SignUp.css';
 import Header from '../headers/Header';
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function SignUp() {
     // Declare a new state variable, which we'll call "count"
@@ -31,6 +31,7 @@ function SignUp() {
     const handleChangePrenume = (e) => {
         setPrenume(e.target.value);
     }
+
 
     function validate() {
         // Username
@@ -81,16 +82,36 @@ function SignUp() {
     }
 
     function fctSignUp() {
-        if (validate()) {
+        if (true) {
             // TO DO
             alert('Corect')
+
+            // Call Sign up
+            const contNou = {
+                username: username,
+                email: email,
+                password: password,
+                nume: nume,
+                prenume: prenume
+            }
+
+            fetch('http://localhost:3001/signup', {
+                method: 'POST',
+                body: JSON.stringify(contNou),
+                headers: {
+                    'content-type': 'application/json',
+                    'accept': 'application/json'
+                }
+            })
+            .then(response => console.log(response))
+
             goMaterii()
         }
     }
-    function goMaterii(){
-   
+
+    function goMaterii() {
         history.push("/");
-       }
+    }
 
     return (
         <div>
