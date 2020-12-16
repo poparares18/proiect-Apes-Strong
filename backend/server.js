@@ -1,7 +1,8 @@
 const { response } = require('express')
 const express = require('express')
-const { Users } = require('./models/tables')
-const { createUser,getAllUser } = require('./controllers/user')
+const { Users, Courses } = require('./models/tables')
+const { createUser, getAllUser } = require('./controllers/user')
+const { createCourse, getCourses } = require('./controllers/courses')
 const app = express()
 
 
@@ -9,7 +10,10 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 Users.sync().then(() => {
-    console.log("Tabel creat")
+    console.log("Tabel USERS creat");
+})
+Courses.sync().then(() => {
+    console.log("Tabel COURSES creat");
 })
 
 app.use(function (req, res, next) {
@@ -22,7 +26,12 @@ app.use(function (req, res, next) {
 
 
 
+// USERS
 app.post("/signup", createUser)
 app.get("/getAllUsers", getAllUser)
+
+// COURSES
+app.post('/createCourse', createCourse);
+app.get('/getCourses/:id', getCourses);
 
 app.listen(3001)

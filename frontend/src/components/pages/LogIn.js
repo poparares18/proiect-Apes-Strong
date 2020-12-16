@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
+import { UserContext } from '../../context';
 import '../pagesStyle/LogIn.css';
 import Header from '../headers/Header';
 import { useHistory } from "react-router-dom";
 
 function LogIn() {
   // Declare a new state variable, which we'll call "count"
+  const { user, setUser } = useContext(UserContext);
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   let history = useHistory();
@@ -15,6 +17,7 @@ function LogIn() {
     setPassword(e.target.value);
   }
 
+ 
   function validate() {
     if (username.replace(/\s/g, "").length < 5 || username.replace(/\s/g, "").length > 15) {
       alert("Username-ul este invalid!");
@@ -46,11 +49,12 @@ function LogIn() {
 
     console.log(vect)
 
-    for(let i=0;i<vect.length;i++){
-      if(username === vect[i].username && 
-        password === vect[i].password){
-          return true;
-        }
+    for (let i = 0; i < vect.length; i++) {
+      if (username === vect[i].username &&
+        password === vect[i].password) {
+        setUser(username);  
+        return true;
+      }
     }
 
     alert('Username sau parola gresite!')

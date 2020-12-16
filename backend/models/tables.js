@@ -14,7 +14,7 @@ sequelize.authenticate().then(() => {
 })
 
 
-const Users = sequelize.define('users',{
+const Users = sequelize.define('users', {
     username: Sequelize.STRING,
     email: Sequelize.STRING,
     password: Sequelize.STRING,
@@ -22,4 +22,8 @@ const Users = sequelize.define('users',{
     prenume: Sequelize.STRING
 })
 
-module.exports = {Users};
+const Courses = sequelize.define('courses', {
+    numeMaterie: Sequelize.STRING,
+    usernameFK: Sequelize.STRING
+})
+module.exports = { Users, Courses };

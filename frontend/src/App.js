@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { UserContext } from './context';
 import logo from './logo.svg';
 import './App.css';
 import SignUp from './components/pages/SignUp';
@@ -11,23 +12,26 @@ import {
 } from "react-router-dom";
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <LogIn />
-        </Route>
-        <Route exact path="/materii">
-          <Materii />
-        </Route>
-        <Route exact path="/sign-up">
-          <SignUp />
+    <UserContext.Provider value={{ user, setUser }}>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <LogIn />
+          </Route>
+          <Route exact path="/materii">
+            <Materii />
+          </Route>
+          <Route exact path="/sign-up">
+            <SignUp />
           </Route>
           <Route exact path="/log-in">
-          <LogIn/>
-        </Route>
-      </Switch>
-    </Router>
+            <LogIn />
+          </Route>
+        </Switch>
+      </Router>
+    </UserContext.Provider>
   );
 }
 
