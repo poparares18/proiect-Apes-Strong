@@ -2,7 +2,7 @@ const { response } = require('express')
 const express = require('express')
 const { Users, Courses } = require('./models/tables')
 const { createUser, getAllUser } = require('./controllers/user')
-const { createCourse, getCourses } = require('./controllers/courses')
+const { createCourse, getCourses, deleteCourse, editCourse } = require('./controllers/courses')
 const app = express()
 
 
@@ -33,5 +33,7 @@ app.get("/getAllUsers", getAllUser)
 // COURSES
 app.post('/createCourse', createCourse);
 app.get('/getCourses/:id', getCourses);
+app.delete('/deleteCourse/:id', deleteCourse);
+app.put('/editCourse/:id', editCourse);
 
 app.listen(3001)

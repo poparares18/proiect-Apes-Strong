@@ -144,17 +144,17 @@ function SignUp() {
 
             <h1 id="h1Sign">Completati formularul:</h1>
             <div id='divSignUp'>
-                <label for="username">Username: </label>
+                <label htmlFor="username">Username: </label>
                 <input type="text" id="username" onChange={handleChangeUsername} />
-                <label for="email">Email(@stud.ase.ro): </label>
+                <label htmlFor="email">Email(@stud.ase.ro): </label>
                 <input type="text" id="email" onChange={handleChangeEmail} />
-                <label for="password">Password: </label>
+                <label htmlFor="password">Password: </label>
                 <input type="text" id="password" onChange={handleChangePassword} />
-                <label for="confirmPassword">Confirm password: </label>
+                <label htmlFor="confirmPassword">Confirm password: </label>
                 <input type="text" id="confirmPassword" onChange={handleChangeConfirmPassword} />
-                <label for="nume">Nume: </label>
+                <label htmlFor="nume">Nume: </label>
                 <input type="text" id="nume" onChange={handleChangeNume} />
-                <label for="prenume">Prenume: </label>
+                <label htmlFor="prenume">Prenume: </label>
                 <input type="text" id="prenume" onChange={handleChangePrenume} />
             </div>
 

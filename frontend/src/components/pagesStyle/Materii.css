@@ -1,15 +1,17 @@
 #divMaterii #delete{
     position: absolute;
-    bottom: 5%;
-    left: 5%;
+    bottom: 14%;
+    left: 16%;
     background-color: transparent;
+    border: none;
 }
 
 #divMaterii #add{
-    position: absolute;
+    position: fixed;
     bottom: 5%;
     right: 5%;
     background-color: transparent;
+    border: none;
 }
 
 
@@ -26,3 +28,21 @@
     height: 25px;
     margin-right: 30%;
 }
+
+.wrapper-materii{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wrapper-materie{
+    background-image: url("../pages/imagini/notita.png");
+    width: 300px;
+    height: 300px;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+

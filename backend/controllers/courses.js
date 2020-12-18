@@ -13,7 +13,7 @@ const getCourses = async (request, response) => {
     Courses.findAll({
         where: {
             usernameFK: request.params.id
-          }
+        }
     }).then((results) => {
         response.status(200).json(results);
     })
@@ -23,4 +23,31 @@ const getCourses = async (request, response) => {
 }
 
 
-module.exports = { createCourse, getCourses }
+const deleteCourse = async (request, response) => {
+
+    Courses.findByPk(request.params.id).then((course) => {
+        if (course) {
+            course.destroy().then((result) => {
+                response.status(204).send()
+            }).catch((err) => {
+                console.log(err)
+                response.status(500).send('database error')
+            })
+        } else {
+            response.status(404).send('resource not found')
+        }
+    }).catch((err) => {
+        console.log(err)
+        response.status(500).send('database error')
+    })
+}
+
+const editCourse = async (request, response) => {
+    Courses.findByPk(request.params.id).then((course) => {
+        if (course) {
+            course.update(request.body)
+        }
+    })
+}
+
+module.exports = { createCourse, getCourses, deleteCourse, editCourse }

@@ -5,12 +5,14 @@ import imgAdd from './imagini/add.png'
 import imgNote from './imagini/notita.png'
 import '../pagesStyle/Materii.css'
 import HeaderBurger from '../headers/HeaderBurger';
+import Materie from '../Materie';
 
 
 function Materii() {
   // Declare a new state variable, which we'll call "count"
   const { user, setUser } = useContext(UserContext);
   const [search, setSearch] = useState('');
+  const [data, setData] = useState([]);
   const handleChangeSearch = (e) => {
     setSearch(e.target.value);
   }
@@ -19,10 +21,22 @@ function Materii() {
 
 
 
-  useEffect(preluareMateriiDB);
+  useEffect(preluareMaterii);
 
   //window.onload = preluareMateriiDB();
 
+  async function preluareMaterii() {
+    const username = user;
+    let url = 'http://localhost:3001/getCourses' + `/${username}`;
+
+    let response = await fetch(url, {
+      method: 'GET',
+    })
+
+    let vect = await response.json()
+    //console.log(vect);
+    setData(vect)
+  }
 
   async function preluareMateriiDB() {
     //alert('ceva');
@@ -37,7 +51,7 @@ function Materii() {
 
     let vect = await response.json()
     console.log('ASTA E RASP', vect);
-    console.log('Div princeipla:',divPrincipal);
+    console.log('Div princeipla:', divPrincipal);
     afisareVectorMaterii(vect);
   }
 
@@ -99,8 +113,13 @@ function Materii() {
       context.fillText(numeMaterie, canvas.width / 2, canvas.height / 2);
 
       adaugareMaterieInDB(numeMaterie, user);
-      divMaterii.append(canvas);
+      //divMaterii.append(canvas);
     }
+  }
+
+
+  function handleAddMaterii(){
+
   }
 
 
@@ -153,8 +172,10 @@ function Materii() {
       <div id='divMaterii'>
         <input type="text" id="search" onChange={handleChangeSearch} />
         <input type="button" value="Search" />
-
-        <button id="delete" ><img src={imgDelete} width='100px' height='100px' /></button>
+        <div className={'wrapper-materii'}>
+          {data.map((materie, i) => <Materie name={materie.numeMaterie} id={materie.id} key={i} />)}
+        </div>
+        
         <button id="add" onClick={onClickAdaugareMaterie}><img src={imgAdd} width='100px' height='100px' /></button>
       </div>
     </div>
