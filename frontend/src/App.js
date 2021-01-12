@@ -5,6 +5,7 @@ import './App.css';
 import SignUp from './components/pages/SignUp';
 import Materii from './components/pages/Materii';
 import LogIn from './components/pages/LogIn';
+import Notite from './components/pages/Notite';
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/log-in">
             <LogIn />
+          </Route>
+          <Route exact path="/notite">
+            <Notite />
           </Route>
         </Switch>
       </Router>
