@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect} from 'react';
 import { UserContext } from '../../context';
 import imgDelete from './imagini/delete.png'
 import imgAdd from './imagini/add.png'
@@ -13,6 +13,7 @@ function Materii() {
   const { user, setUser } = useContext(UserContext);
   const [search, setSearch] = useState('');
   const [data, setData] = useState([]);
+
   const handleChangeSearch = (e) => {
     setSearch(e.target.value);
   }
@@ -21,9 +22,17 @@ function Materii() {
   const imgMaterii = document.createElement('img');
   imgMaterii.src = imgNote;
 
+  let isSubmit = false;
 
+  // useEffect(preluareMaterii);
+  useEffect(() => {
+     isSubmit= true
+      if (isSubmit) {
+        preluareMaterii();
+      }
+    return () => isSubmit = false
+  }, []);
 
-  useEffect(preluareMaterii);
 
   //window.onload = preluareMateriiDB();
 
@@ -38,6 +47,8 @@ function Materii() {
     let vect = await response.json()
     //console.log(vect);
     setData(vect)
+    console.log(vect);
+    
   }
 
 
@@ -75,6 +86,7 @@ function Materii() {
 
   function keyDownMaterie(e) {
     if (e.keyCode == 13) {
+      
       let divMaterii = document.querySelector('#divMaterii');
 
       let div = divMaterii.querySelector('#divTemporat');
@@ -82,7 +94,6 @@ function Materii() {
 
       numeMaterie = div.querySelector('input').value;
       let img = div.querySelector('img');
-
       div.remove();
 
       let canvas = document.createElement('canvas');
@@ -96,10 +107,11 @@ function Materii() {
       context.textBaseline = 'middle';
       context.textAlign = 'center';
       context.fillText(numeMaterie, canvas.width / 2, canvas.height / 2);
-
       adaugareMaterieInDB(numeMaterie, user);
+      
       //divMaterii.append(canvas);
-    }
+      }
+    
   }
 
 
@@ -125,8 +137,12 @@ function Materii() {
     })
   }
 
-function goToNotite(){
-  history.push("/notite");
+function goToNotite(materie){
+  history.push({ 
+    pathname: '/notite',
+    //data: "religie"
+   });
+
 }
 
   return (
@@ -137,13 +153,13 @@ function goToNotite(){
         <input type="text" id="search" onChange={handleChangeSearch} />
         <input type="button" value="Search" />
         <div className={'wrapper-materii'} onClick={goToNotite}>
-          {data.map((materie, i) => <Materie name={materie.numeMaterie} id={materie.id} key={i} />)}
+          {data.map((materie, i) => <Materie name={materie.numeMaterie} id={materie.id} username={materie.usernameFK} key={i} />)}
           
         </div>
         <Link
   to={{
     pathname: "/notite",
-    data: numeMaterie
+    //data: numeMaterie
   }}
 />
         <button id="add" onClick={onClickAdaugareMaterie}><img src={imgAdd} width='100px' height='100px' /></button>

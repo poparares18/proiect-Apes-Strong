@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
 //database, username, password si option
-const sequelize = new Sequelize('monkeys', 'root', 'password', {
+const sequelize = new Sequelize('monkeys', 'root', 'telefon', {
     dialect: "mysql",
     host: "localhost"
 })
@@ -32,4 +32,8 @@ const Notes = sequelize.define('notes', {
    // numeMaterieFK: Sequelize.STRING,
     usernameFK:Sequelize.STRING
 })
-module.exports = { Users, Courses, Notes };
+const EditareNotite = sequelize.define('editareNotite', {
+    numeNotitaFK: Sequelize.STRING,
+    continut:Sequelize.STRING
+})
+module.exports = { Users, Courses, Notes, EditareNotite};

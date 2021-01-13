@@ -10,13 +10,14 @@ function Materie(props) {
             method: 'DELETE',
         })
     }
-
+    
     async function editareMaterie() {
         const id = props.id;
         let url = 'http://localhost:3001/editCourse' + `/${id}`
+        let materie = window.prompt("Noul nume al materie este:",'noul nume');
         let materieNoua = {
-            numeMaterie: 'Religie <3',
-            usernameFK: "Blexer24"
+            numeMaterie: materie,
+            usernameFK: props.username
         }
         await fetch(url, {
             method: 'PUT',

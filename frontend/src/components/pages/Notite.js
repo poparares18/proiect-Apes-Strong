@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { UserContext } from '../../context';
+import {UserContext } from '../../context';
 import imgAdd from './imagini/add.png';
 import imgNote from './imagini/notita.png';
 import Notita from '../Notita';
@@ -12,10 +12,21 @@ const { user, setUser } = useContext(UserContext);
 const [data, setData] = useState([]);
 const imgMaterii = document.createElement('img');
 imgMaterii.src = imgNote;
+// let numeMaterie = data;
+// console.log(numeMaterie);
+let history = useHistory();
 
+let isSubmit = false;
 
 useEffect(preluareNotite);
 
+// useEffect(() => {
+//   isSubmit= true
+//    if (isSubmit) {
+//      preluareNotite();
+//    }
+//  return () => isSubmit = false
+// }, []);
 
 async function preluareNotite() {
   const username = user;
@@ -90,6 +101,9 @@ function onClickNotite() {
       }
     }
 
+    function gotoEditareNotita(){
+      history.push('/editare-notita')
+    }
 
   function adaugareNotesInDB(numeNotita, numeUtilizator) {
     const notita = {
@@ -113,7 +127,7 @@ return (
       <HeaderBurger name={'Notite'} />
 
       <div id='divNotite'>
-        <div className={'wrapper-notite'}>
+        <div className={'wrapper-notite'} onClick={gotoEditareNotita}>
           {data.map((notita, i) => <Notita name={notita.numeNotita} id={notita.id} key={i} />)}
         </div>
         

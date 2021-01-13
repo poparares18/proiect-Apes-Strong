@@ -1,9 +1,10 @@
 const { response } = require('express')
 const express = require('express')
-const { Users, Courses,Notes } = require('./models/tables')
+const { Users, Courses,Notes, EditareNotite } = require('./models/tables')
 const { createUser, getAllUser } = require('./controllers/user')
 const { createCourse, getCourses, deleteCourse, editCourse } = require('./controllers/courses')
 const { createNote, getNotes, deleteNote, editNote } = require('./controllers/notes')
+const { createEditareNotita, getEditareNotita, editNotita } = require('./controllers/editareNotite')
 const app = express()
 
 
@@ -18,6 +19,9 @@ Courses.sync().then(() => {
 })
 Notes.sync().then(()=>{
     console.log("Tabel Notes creata");
+})
+EditareNotite.sync().then(()=>{
+    console.log("Tabel EditareNotite creata");
 })
 
 app.use(function (req, res, next) {
@@ -45,5 +49,10 @@ app.post('/createNote', createNote);
 app.get('/getNotes/:id', getNotes);
 app.delete('/deleteNote/:id', deleteNote);
 app.put('/editNote/:id', editNote);
+
+//EditareNotite
+app.post('/createEditare', createEditareNotita);
+app.get('/getEditareNotita/:id', getEditareNotita);
+app.put('/editNotita/:id', editNotita);
 
 app.listen(3001)

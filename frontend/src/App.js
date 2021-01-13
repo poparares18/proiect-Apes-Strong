@@ -11,6 +11,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import EditareNotita from './components/pages/EditareNotita';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route exact path="/notite">
             <Notite />
+          </Route>
+          <Route exact path="/editare-notita">
+            <EditareNotita />
           </Route>
         </Switch>
       </Router>
