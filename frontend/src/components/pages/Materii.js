@@ -24,14 +24,14 @@ function Materii() {
 
   let isSubmit = false;
 
-  // useEffect(preluareMaterii);
-  useEffect(() => {
-     isSubmit= true
-      if (isSubmit) {
-        preluareMaterii();
-      }
-    return () => isSubmit = false
-  }, []);
+  useEffect(preluareMaterii, []);
+  // useEffect(() => {
+  //    isSubmit= true
+  //     if (isSubmit) {
+  //       preluareMaterii();
+  //     }
+  //   return () => isSubmit = false
+  // }, []);
 
 
   //window.onload = preluareMateriiDB();
@@ -84,8 +84,8 @@ function Materii() {
   }
 
 
-  function keyDownMaterie(e) {
-    if (e.keyCode == 13) {
+  async function keyDownMaterie(e) {
+    if (e.keyCode === 13) {
       
       let divMaterii = document.querySelector('#divMaterii');
 
@@ -109,6 +109,8 @@ function Materii() {
       context.fillText(numeMaterie, canvas.width / 2, canvas.height / 2);
       adaugareMaterieInDB(numeMaterie, user);
       
+      setTimeout(()=>preluareMaterii(), 10);
+      //await preluareMaterii();
       //divMaterii.append(canvas);
       }
     
@@ -119,6 +121,8 @@ function Materii() {
 
   }
 
+
+  
 
   // Adaugare in baza de date
   function adaugareMaterieInDB(numeMaterie, numeUtilizator) {
@@ -152,7 +156,7 @@ function goToNotite(materie){
       <div id='divMaterii'>
         <input type="text" id="search" onChange={handleChangeSearch} />
         <input type="button" value="Search" />
-        <div className={'wrapper-materii'} onClick={goToNotite}>
+        <div className={'wrapper-materii'}>
           {data.map((materie, i) => <Materie name={materie.numeMaterie} id={materie.id} username={materie.usernameFK} key={i} />)}
           
         </div>

@@ -4,6 +4,7 @@
     left: 16%;
     background-color: transparent;
     border: none;
+    z-index: 999999999;
 }
 
 #divMaterii #add{
@@ -11,6 +12,15 @@
     bottom: 5%;
     right: 5%;
     background-color: transparent;
+    border: none;
+}
+
+#divMaterii #edit{
+    position: absolute;
+    bottom: 14%;
+    right: 16%;
+    background-color: transparent;
+    z-index: 999999999;
     border: none;
 }
 

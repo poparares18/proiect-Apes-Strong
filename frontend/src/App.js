@@ -31,12 +31,8 @@ function App() {
           <Route exact path="/log-in">
             <LogIn />
           </Route>
-          <Route exact path="/notite">
-            <Notite />
-          </Route>
-          <Route exact path="/editare-notita">
-            <EditareNotita />
-          </Route>
+          <Route path="/:id" children={<Notite />} />
+          <Route path="/:id" children={<EditareNotita />} />
         </Switch>
       </Router>
     </UserContext.Provider>

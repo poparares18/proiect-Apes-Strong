@@ -6,19 +6,22 @@ import Notita from '../Notita';
 import '../pagesStyle/Notite.css';
 import HeaderBurger from '../headers/HeaderBurger';
 import { useHistory } from "react-router-dom";
+import {
+  useParams
+} from "react-router-dom";
 
 function Notite() {
 const { user, setUser } = useContext(UserContext);
 const [data, setData] = useState([]);
 const imgMaterii = document.createElement('img');
 imgMaterii.src = imgNote;
-// let numeMaterie = data;
+let { id } = useParams();
 // console.log(numeMaterie);
 let history = useHistory();
 
 let isSubmit = false;
 
-useEffect(preluareNotite);
+useEffect(preluareNotite, []);
 
 // useEffect(() => {
 //   isSubmit= true
@@ -29,8 +32,7 @@ useEffect(preluareNotite);
 // }, []);
 
 async function preluareNotite() {
-  const username = user;
-  let url = 'http://localhost:3001/getNotes' + `/${username}`;
+  let url = 'http://localhost:3001/getNotes' + `/${id}`;
 
   let response = await fetch(url, {
     method: 'GET',
@@ -96,7 +98,7 @@ function onClickNotite() {
         context.textAlign = 'center';
         context.fillText(numeNotita, canvas.width / 2, canvas.height / 2);
   
-        adaugareNotesInDB(numeNotita, user);
+        adaugareNotesInDB(numeNotita, id);
         //divMaterii.append(canvas);
       }
     }
@@ -105,10 +107,10 @@ function onClickNotite() {
       history.push('/editare-notita')
     }
 
-  function adaugareNotesInDB(numeNotita, numeUtilizator) {
+  function adaugareNotesInDB(numeNotita, id) {
     const notita = {
         numeNotita: numeNotita,
-      usernameFK: numeUtilizator
+      courseFK: id
     }
 
     fetch('http://localhost:3001/createNote', {
@@ -127,7 +129,7 @@ return (
       <HeaderBurger name={'Notite'} />
 
       <div id='divNotite'>
-        <div className={'wrapper-notite'} onClick={gotoEditareNotita}>
+        <div className={'wrapper-notite'} >
           {data.map((notita, i) => <Notita name={notita.numeNotita} id={notita.id} key={i} />)}
         </div>
         

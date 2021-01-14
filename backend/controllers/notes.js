@@ -12,7 +12,7 @@ const createNote = async (request, response) => {
 const getNotes = async (request, response) => {
     Notes.findAll({
         where: {
-            usernameFK: request.params.id,
+            courseFK: request.params.id,
            // numeMaterieFK:request.params.id
         }
     }).then((results) => {

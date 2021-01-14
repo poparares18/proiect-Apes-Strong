@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
 //database, username, password si option
-const sequelize = new Sequelize('monkeys', 'root', 'telefon', {
+const sequelize = new Sequelize('monkeys', 'root', 'alex1234', {
     dialect: "mysql",
     host: "localhost"
 })
@@ -30,7 +30,8 @@ const Courses = sequelize.define('courses', {
 const Notes = sequelize.define('notes', {
     numeNotita: Sequelize.STRING,
    // numeMaterieFK: Sequelize.STRING,
-    usernameFK:Sequelize.STRING
+    courseFK: Sequelize.STRING
+    // contint
 })
 const EditareNotite = sequelize.define('editareNotite', {
     numeNotitaFK: Sequelize.STRING,

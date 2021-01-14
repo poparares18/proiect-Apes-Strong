@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import imgDelete from './pages/imagini/delete.png'
+import imgDelete from './pages/imagini/delete.png';
+import { Link } from "react-router-dom";
 
 function Notita(props) {
 
@@ -33,7 +34,7 @@ function Notita(props) {
 
     return (
         <div className={'wrapper-notite'}>
-            <span>{props.name}</span>
+            <Link to={`/${props.id}`}><span>{props.name}</span> </Link>
             <button id="delete" onClick={stergereNotita} ><img src={imgDelete} width='50px' height='50px' /></button>
             <button id='edit' onClick={editareNotita} >Edit</button>
         </div>
