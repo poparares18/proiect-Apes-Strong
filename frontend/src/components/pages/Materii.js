@@ -154,8 +154,7 @@ function goToNotite(materie){
       <HeaderBurger name={'Materii'} />
 
       <div id='divMaterii'>
-        <input type="text" id="search" onChange={handleChangeSearch} />
-        <input type="button" value="Search" />
+       
         <div className={'wrapper-materii'}>
           {data.map((materie, i) => <Materie name={materie.numeMaterie} id={materie.id} username={materie.usernameFK} key={i} />)}
           

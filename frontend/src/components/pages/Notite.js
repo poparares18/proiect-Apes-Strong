@@ -13,6 +13,7 @@ import {
 function Notite() {
   const { user, setUser } = useContext(UserContext);
   const [data, setData] = useState([]);
+  const [searchTerm, setSearch]=useState('')
   const imgMaterii = document.createElement('img');
   imgMaterii.src = imgNote;
   let { id } = useParams();
@@ -131,8 +132,17 @@ function Notite() {
       <HeaderBurger name={'Notite'} />
 
       <div id='divNotite'>
+      <input type="text" id="search" onChange={event=>{setSearch(event.target.value)}}  />
         <div className={'wrapper-notite'} >
-          {data.map((notita, i) => <Notita name={notita.numeNotita} id={notita.id} idCurs={id} key={i} />)}
+          {data.map((notita, i) =>{
+            if(searchTerm==""){
+          return <Notita name={notita.numeNotita} id={notita.id} idCurs={id} key={i} />
+        }
+        else if(notita.numeNotita.toLowerCase().includes(searchTerm.toLowerCase())){
+          return <Notita name={notita.numeNotita} id={notita.id} idCurs={id} key={i} />
+        }
+          })}
+
         </div>
 
         <button id="add" onClick={onClickNotite}><img src={imgAdd} width='100px' height='100px' /></button>

@@ -38,14 +38,9 @@
     margin-right: 30px;
     width: 200px;
     height: 20px;
-    margin-left: 40%;
+    margin-left: 43%;
 }
 
-#divNotite input[type="button"]{
-    width: 100px;
-    height: 25px;
-    margin-right: 30%;
-}
 
 .wrapper-notite{
     display: flex;
