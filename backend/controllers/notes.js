@@ -55,4 +55,14 @@ const updateNoteContent = async (request, response) => {
     })
 }
 
-module.exports = { createNote, getNotes, deleteNote, editNote, updateNoteContent }
+const getNote = async (request, response) => {
+    Notes.findByPk(request.params.id).then((note) => {
+        response.status(200).json(note);
+    }).catch((err) => {
+        console.log(err)
+        response.status(500).send('database error')
+    })
+}
+
+
+module.exports = { createNote, getNotes, deleteNote, editNote, updateNoteContent, getNote }

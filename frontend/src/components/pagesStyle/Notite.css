@@ -15,6 +15,15 @@
     border: none;
 }
 
+#divNotite #share{
+    position: absolute;
+    top: 14%;
+    right: 16%;
+    background-color: transparent;
+    z-index: 999999999;
+    border: none;
+}
+
 #divNotite #edit{
     position: absolute;
     bottom: 14%;
