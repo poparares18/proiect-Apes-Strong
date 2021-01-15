@@ -22,7 +22,6 @@ const getNotes = async (request, response) => {
 
 
 const deleteNote = async (request, response) => {
-
     Notes.findByPk(request.params.id).then((note) => {
         if (note) {
             note.destroy().then((result) => {
@@ -48,4 +47,12 @@ const editNote = async (request, response) => {
     })
 }
 
-module.exports = { createNote, getNotes, deleteNote, editNote }
+const updateNoteContent = async (request, response) => {
+    Notes.findByPk(request.params.id).then((note) => {
+        if (note) {
+            note.update(request.body)
+        }
+    })
+}
+
+module.exports = { createNote, getNotes, deleteNote, editNote, updateNoteContent }

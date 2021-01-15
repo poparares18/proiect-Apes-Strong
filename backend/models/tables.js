@@ -29,12 +29,12 @@ const Courses = sequelize.define('courses', {
 
 const Notes = sequelize.define('notes', {
     numeNotita: Sequelize.STRING,
-   // numeMaterieFK: Sequelize.STRING,
-    courseFK: Sequelize.STRING
-    // contint
+    courseFK: Sequelize.STRING,
+    continutNotita: Sequelize.TEXT
 })
-const EditareNotite = sequelize.define('editareNotite', {
-    numeNotitaFK: Sequelize.STRING,
-    continut:Sequelize.STRING
-})
-module.exports = { Users, Courses, Notes, EditareNotite};
+
+// const EditareNotite = sequelize.define('editareNotite', {
+//     numeNotitaFK: Sequelize.STRING,
+//     continut:Sequelize.STRING
+// })
+module.exports = { Users, Courses, Notes};

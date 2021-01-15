@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import {UserContext } from '../../context';
+import { UserContext } from '../../context';
 import imgAdd from './imagini/add.png';
 import imgNote from './imagini/notita.png';
 import Notita from '../Notita';
@@ -11,41 +11,41 @@ import {
 } from "react-router-dom";
 
 function Notite() {
-const { user, setUser } = useContext(UserContext);
-const [data, setData] = useState([]);
-const imgMaterii = document.createElement('img');
-imgMaterii.src = imgNote;
-let { id } = useParams();
-// console.log(numeMaterie);
-let history = useHistory();
+  const { user, setUser } = useContext(UserContext);
+  const [data, setData] = useState([]);
+  const imgMaterii = document.createElement('img');
+  imgMaterii.src = imgNote;
+  let { id } = useParams();
+  // console.log(numeMaterie);
+  let history = useHistory();
 
-let isSubmit = false;
+  let isSubmit = false;
 
-useEffect(preluareNotite, []);
+  useEffect(preluareNotite, []);
 
-// useEffect(() => {
-//   isSubmit= true
-//    if (isSubmit) {
-//      preluareNotite();
-//    }
-//  return () => isSubmit = false
-// }, []);
+  // useEffect(() => {
+  //   isSubmit= true
+  //    if (isSubmit) {
+  //      preluareNotite();
+  //    }
+  //  return () => isSubmit = false
+  // }, []);
 
-async function preluareNotite() {
-  let url = 'http://localhost:3001/getNotes' + `/${id}`;
+  async function preluareNotite() {
+    let url = 'http://localhost:3001/getNotes' + `/${id}`;
 
-  let response = await fetch(url, {
-    method: 'GET',
-  })
+    let response = await fetch(url, {
+      method: 'GET',
+    })
 
-  let vect = await response.json()
-  //console.log(vect);
-  setData(vect)
-}
+    let vect = await response.json()
+    console.log(vect);
+    setData(vect)
+  }
 
 
 
-function onClickNotite() {
+  function onClickNotite() {
 
     let div = document.createElement('div');
     div.id = 'divTemporat'
@@ -75,41 +75,43 @@ function onClickNotite() {
     })
   }
 
-    function keyDownMaterie(e) {
-      if (e.keyCode == 13) {
-        let divNotite = document.querySelector('#divNotite');
-  
-        let div = divNotite.querySelector('#divTemporat');
-  
-        let numeNotita = div.querySelector('input').value;
-        let img = div.querySelector('img');
-  
-        div.remove();
-  
-        let canvas = document.createElement('canvas');
-        let context = canvas.getContext('2d');
-        canvas.width = 300;
-        canvas.height = 300;
-        context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
-  
-        context.fillStyle = 'black';
-        context.font = '14pt Tahoma'
-        context.textBaseline = 'middle';
-        context.textAlign = 'center';
-        context.fillText(numeNotita, canvas.width / 2, canvas.height / 2);
-  
-        adaugareNotesInDB(numeNotita, id);
-        //divMaterii.append(canvas);
-      }
-    }
+  function keyDownMaterie(e) {
+    if (e.keyCode == 13) {
+      let divNotite = document.querySelector('#divNotite');
 
-    function gotoEditareNotita(){
-      history.push('/editare-notita')
+      let div = divNotite.querySelector('#divTemporat');
+
+      let numeNotita = div.querySelector('input').value;
+      let img = div.querySelector('img');
+
+      div.remove();
+
+      let canvas = document.createElement('canvas');
+      let context = canvas.getContext('2d');
+      canvas.width = 300;
+      canvas.height = 300;
+      context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+
+      context.fillStyle = 'black';
+      context.font = '14pt Tahoma'
+      context.textBaseline = 'middle';
+      context.textAlign = 'center';
+      context.fillText(numeNotita, canvas.width / 2, canvas.height / 2);
+
+      adaugareNotesInDB(numeNotita, id);
+
+      setTimeout(() => preluareNotite(), 10);
+      //divMaterii.append(canvas);
     }
+  }
+
+  function gotoEditareNotita() {
+    history.push('/editare-notita')
+  }
 
   function adaugareNotesInDB(numeNotita, id) {
     const notita = {
-        numeNotita: numeNotita,
+      numeNotita: numeNotita,
       courseFK: id
     }
 
@@ -122,17 +124,17 @@ function onClickNotite() {
       }
     })
   }
- 
 
-return (
+
+  return (
     <div >
       <HeaderBurger name={'Notite'} />
 
       <div id='divNotite'>
         <div className={'wrapper-notite'} >
-          {data.map((notita, i) => <Notita name={notita.numeNotita} id={notita.id} key={i} />)}
+          {data.map((notita, i) => <Notita name={notita.numeNotita} id={notita.id} idCurs={id} key={i} />)}
         </div>
-        
+
         <button id="add" onClick={onClickNotite}><img src={imgAdd} width='100px' height='100px' /></button>
       </div>
     </div>

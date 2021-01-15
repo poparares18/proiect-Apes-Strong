@@ -3,7 +3,7 @@ const express = require('express')
 const { Users, Courses,Notes, EditareNotite } = require('./models/tables')
 const { createUser, getAllUser } = require('./controllers/user')
 const { createCourse, getCourses, deleteCourse, editCourse } = require('./controllers/courses')
-const { createNote, getNotes, deleteNote, editNote } = require('./controllers/notes')
+const { createNote, getNotes, deleteNote, editNote, updateNoteContent} = require('./controllers/notes')
 const { createEditareNotita, getEditareNotita, editNotita } = require('./controllers/editareNotite')
 const app = express()
 
@@ -20,9 +20,9 @@ Courses.sync().then(() => {
 Notes.sync().then(()=>{
     console.log("Tabel Notes creata");
 })
-EditareNotite.sync().then(()=>{
-    console.log("Tabel EditareNotite creata");
-})
+// EditareNotite.sync().then(()=>{
+//     console.log("Tabel EditareNotite creata");
+// })
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", req.headers.origin ? req.headers.origin : "*");
@@ -49,10 +49,11 @@ app.post('/createNote', createNote);
 app.get('/getNotes/:id', getNotes);
 app.delete('/deleteNote/:id', deleteNote);
 app.put('/editNote/:id', editNote);
+app.put('/updateNoteContent/:id',updateNoteContent);
 
 //EditareNotite
-app.post('/createEditare', createEditareNotita);
-app.get('/getEditareNotita/:id', getEditareNotita);
-app.put('/editNotita/:id', editNotita);
+// app.post('/createEditare', createEditareNotita);
+// app.get('/getEditareNotita/:id', getEditareNotita);
+// app.put('/editNotita/:id', editNotita);
 
 app.listen(3001)

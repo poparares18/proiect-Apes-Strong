@@ -160,12 +160,6 @@ function goToNotite(materie){
           {data.map((materie, i) => <Materie name={materie.numeMaterie} id={materie.id} username={materie.usernameFK} key={i} />)}
           
         </div>
-        <Link
-  to={{
-    pathname: "/notite",
-    //data: numeMaterie
-  }}
-/>
         <button id="add" onClick={onClickAdaugareMaterie}><img src={imgAdd} width='100px' height='100px' /></button>
       </div>
     </div>

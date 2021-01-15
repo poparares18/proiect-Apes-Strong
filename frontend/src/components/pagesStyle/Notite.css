@@ -4,6 +4,7 @@
     left: 16%;
     background-color: transparent;
     border: none;
+    z-index: 999999999;
 }
 
 #divNotite #add{
@@ -14,6 +15,14 @@
     border: none;
 }
 
+#divNotite #edit{
+    position: absolute;
+    bottom: 14%;
+    right: 16%;
+    background-color: transparent;
+    z-index: 999999999;
+    border: none;
+}
 
 #divNotite input[type="text"]{
     margin-top: 50px;
@@ -34,7 +43,7 @@
     flex-wrap: wrap;
 }
 
-.wrapper-notite{
+.wrapper-notita{
     background-image: url("../pages/imagini/notita.png");
     width: 300px;
     height: 300px;

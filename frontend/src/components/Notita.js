@@ -1,8 +1,11 @@
 import React, { useState, useContext } from 'react';
 import imgDelete from './pages/imagini/delete.png';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import imgEdit from './pages/imagini/edit.svg';
 
 function Notita(props) {
+
+    let history = useHistory();
 
     async function stergereNotita() {
         const id = props.id;
@@ -13,30 +16,38 @@ function Notita(props) {
     }
 
     async function editareNotita() {
-        const id = props.id;
-        let url = 'http://localhost:3001/editNote' + `/${id}`
-        let notitaNoua = {
-            numeNotita: 'Notita 1',
-          //  numeMaterie: 'Religie <3',
-            usernameFK: "Blexer24"
-        }
-        await fetch(url, {
-            method: 'PUT',
-            body: JSON.stringify(notitaNoua),
+        const idNotita = props.id;
+        const idCurs = props.idCurs;
+        let url = 'http://localhost:3001/editNote' + `/${idNotita}`
 
-            headers: {
-                'content-type': 'application/json',
-                'accept': 'application/json'
+        let notita = window.prompt("Noul nume al notitei este:", 'noul nume');
+        if (!(notita === null || notita === "")) {
+
+            let notitaNoua = {
+                numeNotita: notita,
+                courseFK: idCurs
             }
-        })
+            await fetch(url, {
+                method: 'PUT',
+                body: JSON.stringify(notitaNoua),
+
+                headers: {
+                    'content-type': 'application/json',
+                    'accept': 'application/json'
+                }
+            })
+        }
     }
 
+    function goToEditare() {
+        history.push("/editare-notita");
+    }
 
     return (
-        <div className={'wrapper-notite'}>
-            <Link to={`/${props.id}`}><span>{props.name}</span> </Link>
+        <div className={'wrapper-notita'}>
+            <Link to={`/editare-notita`}><span >{props.name}</span></Link>
             <button id="delete" onClick={stergereNotita} ><img src={imgDelete} width='50px' height='50px' /></button>
-            <button id='edit' onClick={editareNotita} >Edit</button>
+            <button id='edit' onClick={editareNotita} ><img src={imgEdit} width='50px' height='50px' /></button>
         </div>
     );
 }
