@@ -14,6 +14,9 @@ const EditareNotita = () => {
   let { id } = useParams();
   let { continut } = useParams();
 
+  let gol = '{"blocks":[{"key":"","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}';
+
+
   const [editorState, setEditorState] = useState(
     () => EditorState.createWithContent(convertFromRaw(JSON.parse(continut))),
   );
@@ -21,6 +24,7 @@ const EditareNotita = () => {
   const [data, setData] = useState([]);
 
   async function preluareContinut() {
+    console.log(id);
     let url = 'http://localhost:3001/getNote' + `/${id}`
     let response = await fetch(url, {
       method: 'GET',
@@ -30,9 +34,10 @@ const EditareNotita = () => {
       }
     })
     let res = await response.json()
-    setData(res);
-    console.log(convertFromRaw(JSON.parse(res.continutNotita)));
     console.log(res);
+    setData(res);
+    //console.log(convertFromRaw(JSON.parse(res.continutNotita)));
+
   }
 
   useEffect(() => {
@@ -111,9 +116,9 @@ const EditareNotita = () => {
         editorClassName="editor-class"
         toolbarClassName="toolbar-class"
       />
-
+{/* 
       {console.log('data', data)}
-      {console.log('data', data.continutNotita)}
+      {console.log('data', data.continutNotita)} */}
       <button id="btnSave" onClick={onClickSaveContent}>Save</button>
     </div>
   )

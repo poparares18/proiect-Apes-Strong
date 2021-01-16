@@ -42,8 +42,9 @@ function Notite() {
     let vect = await response.json()
     for(let i = 0; i < vect.length; i++) {
       if(vect[i].continutNotita == null){
-        vect[i].continutNotita ='{"blocks":[{"key":"1gh8i","text":"a","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}';
+        vect[i].continutNotita = '{"blocks":[{"key":"","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}';
         console.log(vect[i].continutNotita);
+        console.log("Se intmapla");
       }
     }
     console.log(vect);

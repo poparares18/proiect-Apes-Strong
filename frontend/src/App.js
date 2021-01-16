@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/log-in">
             <LogIn />
           </Route>
-          <Route exact path="/editare-notita/:id:continut">
+          <Route exact path="/editare-notita/:id/:continut">
             <EditareNotita />
           </Route>
           <Route path="/:id" children={<Notite />} />
