@@ -1,3 +1,14 @@
+#divTemporat {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    background-image: url('../pages/imagini/notita.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #divMaterii #delete{
     position: absolute;
     bottom: 14%;

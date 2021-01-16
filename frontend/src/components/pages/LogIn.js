@@ -3,12 +3,15 @@ import { UserContext } from '../../context';
 import '../pagesStyle/LogIn.css';
 import Header from '../headers/Header';
 import { useHistory } from "react-router-dom";
+import Eye from './imagini/visibility.svg';
 
 function LogIn() {
   // Declare a new state variable, which we'll call "count"
   const { user, setUser } = useContext(UserContext);
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [visible, setVisible] = useState(false);
+  const handleVisible = () => {setVisible(!visible)};
   let history = useHistory();
   const handleChangeUsername = (e) => {
     setUserName(e.target.value);
@@ -74,8 +77,11 @@ function LogIn() {
       <div id="divLogIn">
         <label htmlFor="username">Username: </label>
         <input type="text" id="username" onChange={handleChangeUsername} />
+        <div id="passwordDiv">
         <label htmlFor="password">Password: </label>
-        <input type="text" id="password" onChange={handleChangePassword} />
+        <input type={visible ? "text" : "password"} id="password" onChange={handleChangePassword} />
+        <img src={Eye} onClick={handleVisible}/>
+        </div>
 
         <input type="button" value="Log in" id="btnLogIn" onClick={LogIn} />
         <a onClick={() => history.push("/sign-up")} id="SignUp">Sign up</a>

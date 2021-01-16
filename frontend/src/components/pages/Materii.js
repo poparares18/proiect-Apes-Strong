@@ -58,25 +58,15 @@ function Materii() {
     let div = document.createElement('div');
     div.id = 'divTemporat'
     let img = document.createElement('img');
-    let canvas = document.createElement('canvas');
     let textBox = document.createElement('input');
 
     img.src = imgNote;
     img.addEventListener('load', e => {
-      let context = canvas.getContext("2d");
-      canvas.width = 300;
-      canvas.height = 300;
-
-      context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
-      canvas.style.border = '3px solid black';
 
       textBox.type = Text;
       textBox.addEventListener('keydown', keyDownMaterie);
 
       div.append(textBox);
-      div.append(canvas);
-      div.append(img);
-      img.style.display = 'none';
 
       let divMaterii = document.querySelector('#divMaterii');
       divMaterii.append(div);
@@ -96,17 +86,6 @@ function Materii() {
       let img = div.querySelector('img');
       div.remove();
 
-      let canvas = document.createElement('canvas');
-      let context = canvas.getContext('2d');
-      canvas.width = 300;
-      canvas.height = 300;
-      context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
-
-      context.fillStyle = 'black';
-      context.font = '14pt Tahoma'
-      context.textBaseline = 'middle';
-      context.textAlign = 'center';
-      context.fillText(numeMaterie, canvas.width / 2, canvas.height / 2);
       adaugareMaterieInDB(numeMaterie, user);
       
       setTimeout(()=>preluareMaterii(), 10);

@@ -40,6 +40,12 @@ function Notite() {
     })
 
     let vect = await response.json()
+    for(let i = 0; i < vect.length; i++) {
+      if(vect[i].continutNotita == null){
+        vect[i].continutNotita ='{"blocks":[{"key":"1gh8i","text":"a","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}';
+        console.log(vect[i].continutNotita);
+      }
+    }
     console.log(vect);
     setData(vect)
   }
@@ -136,10 +142,10 @@ function Notite() {
         <div className={'wrapper-notite'} >
           {data.map((notita, i) =>{
             if(searchTerm==""){
-          return <Notita name={notita.numeNotita} id={notita.id} idCurs={id} key={i} />
+          return <Notita name={notita.numeNotita} id={notita.id} idCurs={id} continutNotita={notita.continutNotita} key={i} />
         }
         else if(notita.numeNotita.toLowerCase().includes(searchTerm.toLowerCase())){
-          return <Notita name={notita.numeNotita} id={notita.id} idCurs={id} key={i} />
+          return <Notita name={notita.numeNotita} id={notita.id} idCurs={id} continutNotita={notita.continutNotita} key={i} />
         }
           })}
 

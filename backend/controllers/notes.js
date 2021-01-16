@@ -20,6 +20,16 @@ const getNotes = async (request, response) => {
     })
 }
 
+const getEditareContinut = async (request, response) => {
+    Notes.findAll({
+        where: {
+            id: request.params.id,
+           // numeMaterieFK:request.params.id
+        }
+    }).then((results) => {
+        response.status(200).json(results);
+    })
+}
 
 const deleteNote = async (request, response) => {
     Notes.findByPk(request.params.id).then((note) => {
@@ -65,4 +75,4 @@ const getNote = async (request, response) => {
 }
 
 
-module.exports = { createNote, getNotes, deleteNote, editNote, updateNoteContent, getNote }
+module.exports = { createNote, getNotes, deleteNote, editNote, updateNoteContent, getNote, getEditareContinut }

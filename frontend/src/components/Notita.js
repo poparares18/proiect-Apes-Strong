@@ -117,10 +117,9 @@ function Notita(props) {
         }
     }
 
-
     return (
         <div className={'wrapper-notita'}>
-            <Link to={`/editare-notita`}><span >{props.name}</span></Link>
+            <Link to={`/editare-notita/${props.id}${props.continutNotita}`}><span >{props.name}</span></Link>
             <button id="delete" onClick={stergereNotita} ><img src={imgDelete} width='50px' height='50px' /></button>
             <button id='edit' onClick={editareNotita} ><img src={imgEdit} width='50px' height='50px' /></button>
             <button id='share' onClick={shareNotita} ><img src={imgShare} width='50px' height='50px' /></button>
