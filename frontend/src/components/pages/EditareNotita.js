@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -7,12 +7,18 @@ import { convertToHTML } from 'draft-convert';
 import {
   useParams
 } from "react-router-dom";
+import { ContinutContext } from '../../contextContinut';
+import { UserContext } from '../../context';
 
 
 const EditareNotita = () => {
 
   let { id } = useParams();
-  let { continut } = useParams();
+  //let { continut2 } = useParams();
+  const { continut, setContinut } = useContext(ContinutContext);
+  const { user, setUser } = useContext(UserContext);
+  console.log(continut);
+  console.log(user);
 
   let gol = '{"blocks":[{"key":"","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}';
 

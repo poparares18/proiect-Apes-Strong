@@ -4,11 +4,13 @@ import { Link, useHistory } from "react-router-dom";
 import imgEdit from './pages/imagini/edit.svg';
 import imgShare from './pages/imagini/share.svg';
 import { UserContext } from '../context';
+import { ContinutContext } from '../contextContinut';
 
 function Notita(props) {
 
     let history = useHistory();
     const { user, setUser } = useContext(UserContext);
+    const { continut, setContinut } = useContext(ContinutContext);
 
     async function stergereNotita() {
         const id = props.id;
@@ -126,9 +128,13 @@ function Notita(props) {
         }
     }
 
+    function onClickNotita(){
+        setContinut(props.continutNotita);
+    }
+
     return (
         <div id={`div${props.id}`} className={'wrapper-notita'}>
-            <Link to={`/editare-notita/${props.id}/${props.continutNotita}`}><span id={`span${props.id}`}>{props.name}</span></Link>
+            <Link to={`/editare-notita/${props.id}`}><span id={`span${props.id}`} onClick={onClickNotita}>{props.name}</span></Link>
             <button id="delete" onClick={stergereNotita} ><img src={imgDelete} width='50px' height='50px' /></button>
             <button id='edit' onClick={editareNotita} ><img src={imgEdit} width='50px' height='50px' /></button>
             <button id='share' onClick={shareNotita} ><img src={imgShare} width='50px' height='50px' /></button>
