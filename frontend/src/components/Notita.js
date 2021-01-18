@@ -75,7 +75,7 @@ function Notita(props) {
             }
 
             if (gasit) {
-                alert(`${numeUser} a fost gasit`);
+                alert(`Notita a fost trimisa catre ${numeUser}`);
 
                 // Adaugare materie shred in contul altui utilizator
                 const materie = {

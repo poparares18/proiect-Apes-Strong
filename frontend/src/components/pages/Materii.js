@@ -7,6 +7,7 @@ import '../pagesStyle/Materii.css'
 import HeaderBurger from '../headers/HeaderBurger';
 import Materie from '../Materie';
 import { Link, useHistory } from "react-router-dom";
+import Header from '../headers/Header';
 
 function Materii() {
   // Declare a new state variable, which we'll call "count"
@@ -131,7 +132,7 @@ function goToNotite(materie){
 
   return (
     <div >
-      <HeaderBurger name={'Materii'} />
+      <Header name={'Materii'} />
 
       <div id='divMaterii'>
        

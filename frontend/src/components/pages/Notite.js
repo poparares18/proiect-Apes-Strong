@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import {
   useParams
 } from "react-router-dom";
+import Header from '../headers/Header';
 
 function Notite() {
   const { user, setUser } = useContext(UserContext);
@@ -137,7 +138,7 @@ function Notite() {
 
   return (
     <div >
-      <HeaderBurger name={'Notite'} />
+      <Header name={'Notite'} />
 
       <div id='divNotite'>
       <input type="text" id="search" onChange={event=>{setSearch(event.target.value)}}  />
