@@ -13,6 +13,11 @@ function Notita(props) {
     async function stergereNotita() {
         const id = props.id;
         let url = 'http://localhost:3001/deleteNote' + `/${id}`
+
+        
+        let div = document.querySelector(`#div${id}`);
+        div.remove();
+
         await fetch(url, {
             method: 'DELETE',
         })
@@ -30,6 +35,10 @@ function Notita(props) {
                 numeNotita: notita,
                 courseFK: idCurs
             }
+
+            let span = document.querySelector(`#span${props.id}`);
+            span.innerHTML = notita;
+
             await fetch(url, {
                 method: 'PUT',
                 body: JSON.stringify(notitaNoua),
@@ -118,8 +127,8 @@ function Notita(props) {
     }
 
     return (
-        <div className={'wrapper-notita'}>
-            <Link to={`/editare-notita/${props.id}/${props.continutNotita}`}><span >{props.name}</span></Link>
+        <div id={`div${props.id}`} className={'wrapper-notita'}>
+            <Link to={`/editare-notita/${props.id}/${props.continutNotita}`}><span id={`span${props.id}`}>{props.name}</span></Link>
             <button id="delete" onClick={stergereNotita} ><img src={imgDelete} width='50px' height='50px' /></button>
             <button id='edit' onClick={editareNotita} ><img src={imgEdit} width='50px' height='50px' /></button>
             <button id='share' onClick={shareNotita} ><img src={imgShare} width='50px' height='50px' /></button>

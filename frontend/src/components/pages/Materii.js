@@ -89,6 +89,7 @@ function Materii() {
       adaugareMaterieInDB(numeMaterie, user);
       
       setTimeout(()=>preluareMaterii(), 10);
+      setTimeout(()=>preluareMaterii(), 10);
       //await preluareMaterii();
       //divMaterii.append(canvas);
       }

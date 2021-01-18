@@ -109,6 +109,7 @@ function Notite() {
       adaugareNotesInDB(numeNotita, id);
 
       setTimeout(() => preluareNotite(), 10);
+      setTimeout(() => preluareNotite(), 10);
       //divMaterii.append(canvas);
     }
   }

@@ -12,8 +12,8 @@ function Materie(props) {
         const id = props.id;
         let url = 'http://localhost:3001/deleteCourse' + `/${id}`;
 
-        // let div = document.querySelector(`#div${id}`);
-        // div.innerHTML = "";
+        let div = document.querySelector(`#div${id}`);
+        div.remove();
 
         await fetch(url, {
             method: 'DELETE',
